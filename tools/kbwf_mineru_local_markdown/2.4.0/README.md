@@ -4,13 +4,13 @@
 
 本版本较 2.3.0 的主要变化：
 
-- 解析服务由「本地 MinerU Gradio」改为「**远程 MinerU API（`/tasks` 异步批量）**」
+- 解析服务由「本地 MinerU Gradio」改为「**本地 MinerU API（`/tasks` 异步批量）**」
 - 支持格式由「仅 PDF」扩展到 **PDF / Word(docx) / PPT / Excel / 图片**（MinerU 3.4.4 原生支持）
 - 新增 **Word 转 PDF 开关**：开启时先经 unoserver 把 Word 转成 PDF 再交给 MinerU；关闭时原样透传，直接解析
 
 ## 简介
 
-**MinerU 本地 PDF 入库工作流模板（2.4.0）** 是一个面向知识库构建场景的工作流模板。它调用远程 MinerU API 服务解析用户上传的文档，直接获取 Markdown 文本，并在 MaxKB 内继续完成文档分段和知识库入库。
+**MinerU 本地 PDF 入库工作流模板（2.4.0）** 是一个面向知识库构建场景的工作流模板。它调用本地 MinerU API 服务解析用户上传的文档，直接获取 Markdown 文本，并在 MaxKB 内继续完成文档分段和知识库入库。
 
 
 ## 工作流能力
@@ -92,4 +92,4 @@
 ## 关联工具
 
 - `tool_unoserver_file_converter`：Word 转 PDF 工具（依赖 unoserver 服务）
-- `mineru-parser`（MinerU API 批量解析）：调用远程 MinerU `/tasks` 接口解析
+- `mineru-parser`（MinerU API 批量解析）：调用本地 MinerU `/tasks` 接口解析

@@ -9,7 +9,7 @@
 
 ## 简介
 
-**MinerU 本地 PDF 入库工作流模板** 是一个面向知识库构建场景的工作流模板。它调用远程 MinerU API 服务解析用户上传的文档，直接获取 Markdown 文本，并在 MaxKB 内继续完成文档分段和知识库入库。
+**MinerU 本地 PDF 入库工作流模板** 是一个面向知识库构建场景的工作流模板。它调用本地 MinerU API 服务解析用户上传的文档，直接获取 Markdown 文本，并在 MaxKB 内继续完成文档分段和知识库入库。
 
 ## 工作流能力
 
@@ -96,4 +96,4 @@
 ## 关联工具
 
 - `tool_unoserver_file_converter`：Word 转 PDF 工具（依赖 unoserver 服务）
-- `mineru-parser`（MinerU API 批量解析）：调用远程 MinerU `/tasks` 接口解析
+- `mineru-parser`（MinerU API 批量解析）：调用本地 MinerU `/tasks` 接口解析

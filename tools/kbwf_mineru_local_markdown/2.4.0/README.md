@@ -1,15 +1,17 @@
-# MinerU 本地 PDF 入库工作流模板
+## 2.4.0 版本说明
 
-## 版本说明
+**注意**：当前适用的 MaxKB 版本为 v2.10.4-lts 及以上版本，MinerU（API 服务）版本为 3.4.4。
 
-**当前版本**：2.4.0
+本版本较 2.3.0 的主要变化：
 
-- 适用于 MaxKB v2.10.4-lts 及以上版本
-- 适配 MinerU（API 服务）3.4.4
+- 解析服务由「本地 MinerU Gradio」改为「**远程 MinerU API（`/tasks` 异步批量）**」
+- 支持格式由「仅 PDF」扩展到 **PDF / Word(docx) / PPT / Excel / 图片**（MinerU 3.4.4 原生支持）
+- 新增 **Word 转 PDF 开关**：开启时先经 unoserver 把 Word 转成 PDF 再交给 MinerU；关闭时原样透传，直接解析
 
 ## 简介
 
-**MinerU 本地 PDF 入库工作流模板** 是一个面向知识库构建场景的工作流模板。它调用远程 MinerU API 服务解析用户上传的文档，直接获取 Markdown 文本，并在 MaxKB 内继续完成文档分段和知识库入库。
+**MinerU 本地 PDF 入库工作流模板（2.4.0）** 是一个面向知识库构建场景的工作流模板。它调用远程 MinerU API 服务解析用户上传的文档，直接获取 Markdown 文本，并在 MaxKB 内继续完成文档分段和知识库入库。
+
 
 ## 工作流能力
 
@@ -20,7 +22,7 @@
 
 ## 前置条件
 
-1. 已部署可访问的 MinerU API 服务（支持 `/tasks` 接口，默认 `http://<mineru-ip>:9000`）
+1. 已部署可访问的 MinerU API 服务（默认 `http://<mineru-ip>:9000`，支持 `/tasks` 接口）
 2. 若开启 Word 转 PDF 开关，需已部署可访问的 **unoserver** 服务（默认 `http://<unoserver-ip>:2003`）
 
 ## 工作流结构
@@ -69,12 +71,6 @@
 | `table_enable` | Boolean | ✅ | 是否解析表格 |
 | `image_analysis` | Boolean | ✅ | 是否进行图片/图表分析 |
 
-
-## LLM 标题增强说明
-### MinerU llm-aided config
-
-建议在 MinerU 中开启 `llm-aided config`，以保证转换出的 Markdown 标题层级仍然清晰规范。
-`llm-aided config` 是 MinerU 中 `mineru.json` 配置文件的一部分，用于配置并启用大模型辅助识别和优化 PDF 文档中的标题层级。开启后，MinerU 在解析复杂 PDF 时会利用大模型智能识别文档中的标题，划分多级标题层级（H1、H2、H3 等），让转换出的 Markdown 结构更清晰规范。
 ## 使用说明
 
 1. 导入该 `kbwf` 模板到 MaxKB
